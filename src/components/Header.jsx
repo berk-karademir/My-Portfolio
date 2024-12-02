@@ -33,6 +33,7 @@ function Header() {
     <div>
       <Form>
         <FormGroup>
+          {/* checked = {} ve value = {}  bakmayı unutma*/}
           <Label htmlFor="languageSelect">Language</Label>
           <Input id="languageSelect" name="languageSelect" type="select">
             <option>TR</option>
@@ -40,8 +41,9 @@ function Header() {
             <option>DE</option>
           </Input>
         </FormGroup>
-        <FormGroup switch>
-          <Label check htmlFor="toggleDarkTheme">
+
+        <FormGroup switch >
+          <Label   check htmlFor="toggleDarkTheme">
             Change Theme
           </Label>
           <Input
@@ -58,7 +60,7 @@ function Header() {
         src={headerImgLocalPath}
         width="400px"
         height="400px"
-        alt="Header Image"
+        alt="HeaderImage"
       />
 
       <p>
@@ -70,7 +72,7 @@ function Header() {
         >
           <img
             src={gitHubLogoLocalPath}
-            alt="Github Link"
+            alt="GithubLink"
             height="64px"
             width="64px"
           />

@@ -15,3 +15,8 @@ export const languageData = {
     },
   };
   
+  export const skills = {
+    skillsHeadingEN:"Skills",
+    skillsHeadingTR:"Yetenekler",
+    currentSkills:["Javascript", "React", "Redux", "VS Code", "Any Skill"]
+  }
