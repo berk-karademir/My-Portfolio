@@ -27,9 +27,32 @@ function Header() {
           </FormGroup>
         </Form>
       </div>
+      https://reactstrap.github.io/?path=/docs/components-forms--input
 */
   return (
-    <div >
+    <div>
+      <Form>
+        <FormGroup>
+          <Label htmlFor="languageSelect">Language</Label>
+          <Input id="languageSelect" name="languageSelect" type="select">
+            <option>TR</option>
+            <option>EN</option>
+            <option>DE</option>
+          </Input>
+        </FormGroup>
+        <FormGroup switch>
+          <Label check htmlFor="toggleDarkTheme">
+            Change Theme
+          </Label>
+          <Input
+            id="toggleDarkTheme"
+            name="toggleDarkTheme"
+            type="switch"
+            role="switch"
+          />
+        </FormGroup>
+      </Form>
+
       <p>{introText(name)}</p>
       <img
         src={headerImgLocalPath}
@@ -65,7 +88,6 @@ function Header() {
       <p>
         Contact me from here ➜
         <a href={`mailto:${eMailContact}`}>Send Mail to: {eMailContact}</a>
-        
       </p>
     </div>
   );
