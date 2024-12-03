@@ -1,5 +1,5 @@
 import React from 'react'
-import { languageData } from '../../Data'
+import { languageData } from '../../data'
 function Skills() {
     const {skillsHeading, currentSkills} = languageData.en.skills
   return (

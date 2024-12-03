@@ -1,5 +1,5 @@
 import { Form, FormGroup, Label, Input } from "reactstrap";
-import { languageData } from "../../Data";
+import { languageData } from "../../data.jsx";
 import { useState } from "react";
 
 function Header() {

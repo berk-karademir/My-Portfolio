@@ -23,7 +23,10 @@ export const languageData = {
         currentLocation: ["Current Location","Mugla"],
         education: ["Education","Bachelor, Canakkale Onsekiz Mart Unv. Travel Man. & Tourism Guidance, 2020"],
         preferredRole: ["Preferred Role","Full-stack Web Developer"],
-        aboutMe:["About me","I graduated in 2020 from universty, i have worked in chain-store brand in retail industry about 3 years. I have been in a full-stack web developer bootcamp since September 2024. My goal is learning more.", "Lorem Ipsum..."]
+        aboutMe:["About me","I graduated in 2020 from universty, i have worked in chain-store brand in retail industry about 3 years. I have been in a full-stack web developer bootcamp since September 2024. My goal is learning more and more.", "Lorem Ipsum... Lorem Ipsum..."]
+      },
+      projects: {
+        projectsHeading:"Projects"
       }
     },
   };
