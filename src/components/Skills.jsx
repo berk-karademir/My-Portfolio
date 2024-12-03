@@ -1,10 +1,10 @@
 import React from 'react'
-import { skills } from '../../data'
+import { languageData } from '../../data'
 function Skills() {
-    const {skillsHeadingEN, skillsHeadingTR, currentSkills} = skills
+    const {skillsHeading, currentSkills} = languageData.en.skills
   return (
     <div>
-      <h2>{skillsHeadingEN}</h2>
+      <h2>{skillsHeading}</h2>
       <section>
                 {currentSkills.map((skill, index) => (
                     //image files' name must be correct: skillname-logo.png
