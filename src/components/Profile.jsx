@@ -1,5 +1,5 @@
 import React from "react";
-import { languageData } from "../../data";
+import { languageData } from "../../Data";
 import {
   Card,
   CardBody,
