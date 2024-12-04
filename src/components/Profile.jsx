@@ -5,6 +5,7 @@ import {
   CardBody,
   CardText,
   CardTitle,
+  Table,
 } from "reactstrap";
 const {
   profileHeading,
@@ -18,33 +19,29 @@ const {
 function Profile() {
   return (
     <section>
+      <div >
       <h2>{profileHeading}</h2>
-      <div>
-      <Card >
-      <CardBody>
-        <CardTitle tag="h3">
-          {basicInfoText}
-        </CardTitle>
-        <CardText>
-          <p>{dateOfBirth[0]}{dateOfBirth[1]}</p>
-        </CardText>
-        <CardText>
-          <p>{currentLocation[0]}{currentLocation[1]}</p> 
-        </CardText>
-        <CardText>
-          <p>{education[0]}{education[1]}</p> 
-        </CardText>
-        <CardText>
-          <p>{preferredRole[0]} {preferredRole[1]} </p> 
-        </CardText>
-      </CardBody>
-    </Card>
-    <div>
-        <h4>{aboutMe[0]}</h4>
-        <p>{aboutMe[1]}</p>
-        <p>{aboutMe[2]}</p>
+      <Table borderless >
+        <tbody>
+          <tr>
+            <td><strong>{dateOfBirth[0]}</strong></td>
+            <td>{dateOfBirth[1]}</td>
+          </tr>
+          <tr>
+            <td><strong>{currentLocation[0]}</strong></td>
+            <td>{currentLocation[1]}</td>
+          </tr>
+          <tr>
+            <td><strong>{education[0]}</strong></td>
+            <td>{education[1]}</td>
+          </tr>
+          <tr>
+            <td><strong>{preferredRole[0]}</strong></td>
+            <td>{preferredRole[1]}</td>
+          </tr>
+        </tbody>
+      </Table>
     </div>
-      </div>
     </section>
   );
 }
