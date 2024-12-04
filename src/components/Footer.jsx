@@ -5,7 +5,7 @@ function Footer() {
   const { footerText, linkHeadings, footerLinksHrefs } = languageData.en.footer;
 
   return (
-    <div>
+    <div className="text-center">
       <p>{footerText}</p>
 
       <div>

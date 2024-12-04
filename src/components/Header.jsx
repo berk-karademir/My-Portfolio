@@ -8,8 +8,7 @@ function Header() {
     name,
     introText,
     headerImgLocalPath,
-    navToGitHubText,
-    gitHubLogoLocalPath,
+    headerLinkImages,
     currentWorkingStatusText,
     courseLinkHref,
     courseNameText,
@@ -19,64 +18,70 @@ function Header() {
     sendMailText,
   } = languageData.en.header;
 
-  /*
-  const [darkMode, setDarkMode] = useState(false);
-
-  const handleClick = () => {
-    setDarkMode((darkMode) => !darkMode); // Dark mode durumunu tersine çevirir
-  };
-  <div className="fixed top-2.5 right-3.5 scroll-pt-2.5">
-        <Form>
-          <FormGroup switch>
-            <Input type="switch" role="switch" checked={darkMode} onChange={handleClick} />
-            <Label check> {`Dark Mode ${darkMode ? "ON" : "OFF"}`} </Label>
-          </FormGroup>
-        </Form>
-      </div>
-      https://reactstrap.github.io/?path=/docs/components-forms--input
-*/
   return (
-    <section className="flex">
-      {/* INTRO & GITHUB & CONTACT */}
-      <div >
-        <p className="indent-8">{introText(name)}</p>
+    <section className="flex flex-col gap-8 p-4 md:flex-row">
+      {/* LEFT COLUMN: INTRO, LINKS, CONTACT */}
+      <div className="flex flex-col gap-4">
+        {/* Intro Text */}
+        <p className="indent-8 text-lg">{introText(name)}</p>
 
-        {navToGitHubText}
-        <a
-          href="https://github.com/berk-karademir"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            src={gitHubLogoLocalPath}
-            alt="GithubLink"
-            height="64px"
-            width="64px"
-          />
-        </a>
+        {/* Dynamic Links */}
+        <div className="flex gap-4">
+          {headerLinkImages.map((link, index) => (
+            <a
+              key={index}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={link.src}
+                alt={link.alt}
+                className="hover:scale-105 transition-transform"
+              />
+            </a>
+          ))}
+        </div>
 
+        {/* Current Working Status */}
         <p>
           {currentWorkingStatusText}
-
-          <a href={courseLinkHref} target="_blank" className="text-red-500">
+          <a
+            href={courseLinkHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-red-500 underline"
+          >
             {courseNameText}
           </a>
         </p>
 
+        {/* Contact Info */}
         <p>
           {navToContactText}
-
-          <a href={`${eMailContactHref}`}>{sendMailText + eMail}</a>
+          <a
+            href={`${eMailContactHref}`}
+            className="text-blue-500 underline hover:text-blue-700"
+          >
+            {sendMailText + eMail}
+          </a>
         </p>
       </div>
 
-      {/* THEME SWITCH & LANGUAGE SELECT */}
-      <div className="flex flex-col">
-        <Form>
+      {/* RIGHT COLUMN: THEME SWITCH, LANGUAGE SELECT, HEADER IMAGE */}
+      <div className="flex flex-col items-center gap-4">
+        {/* Language Selector and Theme Switch */}
+        <Form className="w-full">
           <FormGroup>
-            {/* checked = {} ve value = {}  bakmayı unutma*/}
-            <Label htmlFor="languageSelect">{languageLabelHeading}</Label>
-            <Input id="languageSelect" name="languageSelect" type="select">
+            <Label htmlFor="languageSelect" className="block font-bold">
+              {languageLabelHeading}
+            </Label>
+            <Input
+              id="languageSelect"
+              name="languageSelect"
+              type="select"
+              className="w-full border border-gray-300 rounded-md"
+            >
               {languageData.langOptions.map((lang, index) => (
                 <option key={index} value={lang}>
                   {lang}
@@ -97,14 +102,16 @@ function Header() {
             />
           </FormGroup>
         </Form>
+
+        {/* Header Image */}
         <img
-        src={headerImgLocalPath}
-        width="400px"
-        height="400px"
-        alt="HeaderImage"
-      />
+          src={headerImgLocalPath}
+          width="400px"
+          height="400px"
+          alt="Header Image"
+          className="rounded-md shadow-md"
+        />
       </div>
-      
     </section>
   );
 }
