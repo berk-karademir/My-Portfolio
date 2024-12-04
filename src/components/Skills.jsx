@@ -5,7 +5,7 @@ function Skills() {
   return (
     <div>
       <h2>{skillsHeading}</h2>
-      <section>
+      <section className='flex gap-4 text-center'>
                 {currentSkills.map((skill, index) => (
                     //image files' name must be correct: skillname-logo.png
                     <div key={index}>

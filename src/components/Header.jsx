@@ -36,10 +36,9 @@ function Header() {
       https://reactstrap.github.io/?path=/docs/components-forms--input
 */
   return (
-    <div className="flex flex-row">
-
+    <section className="flex">
       {/* INTRO & GITHUB & CONTACT */}
-      <div>
+      <div >
         <p className="indent-8">{introText(name)}</p>
 
         {navToGitHubText}
@@ -66,16 +65,14 @@ function Header() {
 
         <p>
           {navToContactText}
-          
-          <a href={`${eMailContactHref}`}>
-          {sendMailText + eMail}
-          </a>
+
+          <a href={`${eMailContactHref}`}>{sendMailText + eMail}</a>
         </p>
       </div>
 
-      {/* THEME SWITCH & LANGUAGE SELECT & HEADER IMG */}
-      <div>
-        <Form className="flex">
+      {/* THEME SWITCH & LANGUAGE SELECT */}
+      <div className="flex flex-col">
+        <Form>
           <FormGroup>
             {/* checked = {} ve value = {}  bakmayı unutma*/}
             <Label htmlFor="languageSelect">{languageLabelHeading}</Label>
@@ -100,15 +97,15 @@ function Header() {
             />
           </FormGroup>
         </Form>
-
         <img
-          src={headerImgLocalPath}
-          width="400px"
-          height="400px"
-          alt="HeaderImage"
-        />
+        src={headerImgLocalPath}
+        width="400px"
+        height="400px"
+        alt="HeaderImage"
+      />
       </div>
-    </div>
+      
+    </section>
   );
 }
 

@@ -42,6 +42,11 @@ function Profile() {
         </tbody>
       </Table>
     </div>
+    <div>
+      <h3>{aboutMe[0]}</h3>
+      <p>{aboutMe[1]}</p>
+      <p>{aboutMe[2]}</p>
+    </div>
     </section>
   );
 }
