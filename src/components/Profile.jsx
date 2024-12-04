@@ -20,7 +20,8 @@ function Profile() {
   return (
     <section>
       <div >
-      <h2>{profileHeading}</h2>
+      <h2 className="text-center">{profileHeading}</h2>
+      <h4>{basicInfoText}</h4>
       <Table borderless >
         <tbody>
           <tr>

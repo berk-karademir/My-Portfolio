@@ -9,7 +9,7 @@ export const languageData = {
           return `Hi, I’m ${name}. I’m a junior full-stack web developer. I've been trying to build decent frontend products with all I learned in my course. Let's meet.`;
         },
         headerImgLocalPath: "images/header_img.png",
-        headerLinkImages: [{src:"images/github_logo.svg", href:"https://github.com/berk-karademir", alt:"My GitHub Profile"}, {src:"images/linkedin-logo.png", href:"https://www.linkedin.com/in/berk-karademir-65b150340/", alt:"My LinkedIn Profile"}],
+        headerLinkImages: [{src:"images/linkedin-logo.png", href:"https://www.linkedin.com/in/berk-karademir-65b150340/", alt:"My LinkedIn Profile"}, {src:"images/github_logo.svg", href:"https://github.com/berk-karademir", alt:"My GitHub Profile"},],
         currentWorkingStatusText:
           "Currently, I've been taking a full-stack web developer course in ",
         courseNameText:"Workintech",
