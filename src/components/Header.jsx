@@ -14,7 +14,8 @@ function Header() {
     courseLinkHref,
     courseNameText,
     navToContactText,
-    eMailContact,
+    eMail,
+    eMailContactHref,
     sendMailText,
   } = languageData.en.header;
 
@@ -65,8 +66,9 @@ function Header() {
 
         <p>
           {navToContactText}
-          <a href={`${eMailContact}`}>
-            {sendMailText} {eMailContact}
+          
+          <a href={`${eMailContactHref}`}>
+          {sendMailText + eMail}
           </a>
         </p>
       </div>

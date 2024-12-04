@@ -15,9 +15,10 @@ export const languageData = {
           "Currently, I've been taking a full-stack web developer course in ",
         courseNameText:"Workintech",
         courseLinkHref: "https://www.workintech.com.tr/",
-        navToContactText:"Contact me from here ➜",
-        sendMailText:"Send Mail to: ",
-        eMailContact: "berk.karademir@hotmail.com",
+        navToContactText:"Contact me from here ➜ ",
+        sendMailText:"Send an e-Mail to: ",
+        eMail:"berk.karademir@hotmail.com",
+        eMailContactHref: "mailto:berk.karademir@hotmail.com",
       },
       skills: {
         skillsHeading:"Skills",
