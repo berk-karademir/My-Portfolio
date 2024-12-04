@@ -1,16 +1,21 @@
 import { Form, FormGroup, Label, Input } from "reactstrap";
 import { languageData } from "../../data.jsx";
-import { useState } from "react";
 
 function Header() {
   const {
+    languageLabelHeading,
+    themeSwitchHeading,
     name,
     introText,
     headerImgLocalPath,
+    navToGitHubText,
     gitHubLogoLocalPath,
     currentWorkingStatusText,
     courseLinkHref,
+    courseNameText,
+    navToContactText,
     eMailContact,
+    sendMailText,
   } = languageData.en.header;
 
   /*
@@ -30,41 +35,13 @@ function Header() {
       https://reactstrap.github.io/?path=/docs/components-forms--input
 */
   return (
-    <div>
-      <Form>
-        <FormGroup>
-          {/* checked = {} ve value = {}  bakmayı unutma*/}
-          <Label htmlFor="languageSelect">Language</Label>
-          <Input id="languageSelect" name="languageSelect" type="select">
-            <option>TR</option>
-            <option>EN</option>
-            <option>DE</option>
-          </Input>
-        </FormGroup>
+    <div className="flex flex-row">
 
-        <FormGroup switch >
-          <Label   check htmlFor="toggleDarkTheme">
-            Change Theme
-          </Label>
-          <Input
-            id="toggleDarkTheme"
-            name="toggleDarkTheme"
-            type="switch"
-            role="switch"
-          />
-        </FormGroup>
-      </Form>
+      {/* INTRO & GITHUB & CONTACT */}
+      <div>
+        <p className="indent-8">{introText(name)}</p>
 
-      <p>{introText(name)}</p>
-      <img
-        src={headerImgLocalPath}
-        width="400px"
-        height="400px"
-        alt="HeaderImage"
-      />
-
-      <p>
-        My Github Profile
+        {navToGitHubText}
         <a
           href="https://github.com/berk-karademir"
           target="_blank"
@@ -77,20 +54,58 @@ function Header() {
             width="64px"
           />
         </a>
-      </p>
 
-      <p>
-        {currentWorkingStatusText}
+        <p>
+          {currentWorkingStatusText}
 
-        <a href={courseLinkHref} target="_blank" className="text-red-500">
-          Workintech
-        </a>
-      </p>
+          <a href={courseLinkHref} target="_blank" className="text-red-500">
+            {courseNameText}
+          </a>
+        </p>
 
-      <p>
-        Contact me from here ➜
-        <a href={`mailto:${eMailContact}`}>Send Mail to: {eMailContact}</a>
-      </p>
+        <p>
+          {navToContactText}
+          <a href={`${eMailContact}`}>
+            {sendMailText} {eMailContact}
+          </a>
+        </p>
+      </div>
+
+      {/* THEME SWITCH & LANGUAGE SELECT & HEADER IMG */}
+      <div>
+        <Form className="flex">
+          <FormGroup>
+            {/* checked = {} ve value = {}  bakmayı unutma*/}
+            <Label htmlFor="languageSelect">{languageLabelHeading}</Label>
+            <Input id="languageSelect" name="languageSelect" type="select">
+              {languageData.langOptions.map((lang, index) => (
+                <option key={index} value={lang}>
+                  {lang}
+                </option>
+              ))}
+            </Input>
+          </FormGroup>
+
+          <FormGroup switch>
+            <Label check htmlFor="toggleDarkTheme">
+              {themeSwitchHeading}
+            </Label>
+            <Input
+              id="toggleDarkTheme"
+              name="toggleDarkTheme"
+              type="switch"
+              role="switch"
+            />
+          </FormGroup>
+        </Form>
+
+        <img
+          src={headerImgLocalPath}
+          width="400px"
+          height="400px"
+          alt="HeaderImage"
+        />
+      </div>
     </div>
   );
 }
