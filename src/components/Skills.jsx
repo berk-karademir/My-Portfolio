@@ -1,21 +1,35 @@
-import React from 'react'
-import { languageData } from '../../data'
+import React from "react";
+import { languageData } from "../../data";
+import { useTheme } from "../context/ThemeContext";
+
 function Skills() {
-    const {skillsHeading, currentSkills} = languageData.en.skills
+  const { skillsHeading, currentSkills } = languageData.en.skills;
+  const { theme } = useTheme();
+
   return (
-    <div>
-      <h2>{skillsHeading}</h2>
-      <section className='flex gap-4 text-center'>
-                {currentSkills.map((skill, index) => (
-                    //image files' name must be correct: skillname-logo.png
-                    <div key={index}>
-                        <img src={`images/${skill.toLowerCase()}-logo.png`} alt={`${skill}Logo`} />
-                        <span>{skill}</span>
-                    </div>
-                ))}
-            </section>
+    <div
+      className="text-center w-full"
+      style={{
+        backgroundColor: theme === "dark" ? "#484148" : "#ffffff",
+        color: theme === "dark" ? "#D9D9D9" : "#000000",
+      }}
+    >
+      <h2 className="py-16 text-4xl text-white">{skillsHeading}</h2>
+      <div className="flex flex-row justify-center">
+        <section className="flex gap-4 text-center pb-24">
+          {currentSkills.map((skill, index) => (
+            <div key={index} className="font-bold text-l">
+              <img
+                src={`images/${skill.toLowerCase()}-logo.png`}
+                alt={`${skill} Logo`}
+              />
+              <span>{skill}</span>
+            </div>
+          ))}
+        </section>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Skills
+export default Skills;

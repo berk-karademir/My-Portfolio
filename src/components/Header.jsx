@@ -1,5 +1,6 @@
 import { Form, FormGroup, Label, Input } from "reactstrap";
 import { languageData } from "../../data.jsx";
+import { useTheme } from "../context/ThemeContext.jsx";
 
 function Header() {
   const {
@@ -16,14 +17,28 @@ function Header() {
     eMail,
     eMailContactHref,
     sendMailText,
+    greeting,
   } = languageData.en.header;
 
+  // Custom hook kullanımı
+  const { theme, toggleTheme } = useTheme();
   return (
-    <section className="flex flex-col gap-8 p-4 md:flex-row">
+    <section
+      className={`flex flex-row gap-8 p-4 justify-center w-full`}
+      style={{
+        backgroundColor: theme === "dark" ? "#2A262B" : "#F4F4F4",
+        color: theme === "dark" ? "white" : "black",
+        paddingTop: "5rem",
+      }}
+    >
       {/* LEFT COLUMN: INTRO, LINKS, CONTACT */}
       <div className="flex flex-col gap-4">
         {/* Intro Text */}
-        <p className="indent-8 text-lg">{introText(name)}</p>
+        <p className="w-96">
+          {greeting}
+          <br />
+          {introText(name)}
+        </p>
 
         {/* Dynamic Links */}
         <div className="flex gap-4">
@@ -69,39 +84,33 @@ function Header() {
       </div>
 
       {/* RIGHT COLUMN: THEME SWITCH, LANGUAGE SELECT, HEADER IMAGE */}
-      <div className="flex flex-col items-center gap-4">
+      <div>
         {/* Language Selector and Theme Switch */}
-        <Form className="w-full">
-          <FormGroup>
-            <Label htmlFor="languageSelect" className="block font-bold">
-              {languageLabelHeading}
-            </Label>
-            <Input
-              id="languageSelect"
-              name="languageSelect"
-              type="select"
-              className="w-full border border-gray-300 rounded-md"
-            >
-              {languageData.langOptions.map((lang, index) => (
-                <option key={index} value={lang}>
-                  {lang}
-                </option>
-              ))}
-            </Input>
-          </FormGroup>
-
-          <FormGroup switch>
-            <Label check htmlFor="toggleDarkTheme">
-              {themeSwitchHeading}
-            </Label>
-            <Input
-              id="toggleDarkTheme"
-              name="toggleDarkTheme"
-              type="switch"
-              role="switch"
-            />
-          </FormGroup>
-        </Form>
+        <div className="flex justify-evenly pb-5">
+          <input
+            type="checkbox"
+            class="checkbox"
+            id="checkbox"
+            onChange={toggleTheme}
+          />
+          <label
+            style={{
+              backgroundColor: theme === "dark" ? "black" : "#E92577",
+            }}
+            htmlFor="checkbox"
+            class="checkbox-label"
+          >
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun"></i>
+            <span class="ball"></span>
+          </label>
+          <p>
+            <span className="pr-1">
+              {theme === "dark" ? "LIGHT MODE |" : " DARK MODE |"}
+            </span>
+            <span className="text-[#E92577]">TÜRKÇE'YE GEÇ</span>
+          </p>
+        </div>
 
         {/* Header Image */}
         <img

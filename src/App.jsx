@@ -1,21 +1,23 @@
-import Header from './components/Header'
-import Skills from './components/Skills';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import "./reset.css"
-import Profile from './components/Profile';
-import Projects from './components/Projects';
-import Footer from './components/Footer';
+import React from "react";
+import Header from "./components/Header";
+import Profile from "./components/Profile";
+import Skills from "./components/Skills";
+import { ThemeProvider } from "./context/ThemeContext";
+import Projects from "./components/Projects";
+import Footer from "./components/Footer";
+import "./App.css"
 function App() {
-
   return (
-    <div className='flex flex-col justify-center items-center' >
-      <Header/>
-      <Skills/>
-      <Profile/>
-      <Projects/>
-      <Footer/>
-    </div>
-  )
+    <>
+      <ThemeProvider>
+        <Header />
+        <Skills />
+        <Profile />
+        <Projects />
+        <Footer />
+      </ThemeProvider>
+    </>
+  );
 }
 
-export default App
+export default App;
