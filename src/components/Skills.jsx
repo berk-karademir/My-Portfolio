@@ -11,7 +11,7 @@ function Skills() {
       className="text-center w-full"
       style={{
         backgroundColor: theme === "dark" ? "#484148" : "#ffffff",
-        color: theme === "dark" ? "#D9D9D9" : "black",
+        color: theme === "dark" ? "white" : "black",
       }}
     >
       <h2 className="py-16 text-4xl">{skillsHeading}</h2>
@@ -23,7 +23,7 @@ function Skills() {
                 src={`images/${skill.toLowerCase()}-logo.png`}
                 alt={`${skill} Logo`}
               />
-              <span className="text-[#777777]">{skill}</span>
+              <span>{skill}</span>
             </div>
           ))}
         </section>

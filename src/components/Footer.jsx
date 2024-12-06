@@ -10,6 +10,7 @@ function Footer() {
   const linkColors = ["#1769FF", "#0A0A14", "#0077B5", "#AF0C48"];
 
   return (
+    <>
     <div
       className="text-center flex justify-center items-center pt-20 pb-20"
       style={{
@@ -34,7 +35,10 @@ function Footer() {
           </a>
         ))}
       </div>
+      
     </div>
+    <p className="text-center italic text-[12px] font-bold">Berk Karademir</p>
+    </>
   );
 }
 
