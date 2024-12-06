@@ -34,10 +34,14 @@ export const languageData = {
         aboutMe:["About me","I graduated in 2020 from university, i have worked in chain-store brand in retail industry about 3 years. I have been in a full-stack web developer bootcamp since September 2024. My goal is learning more and more.", "Lorem Ipsum... Lorem Ipsum..."]
       },
       projects: {
-        projectsHeading:"Projects"
+        projectsHeading:"Projects",
+        firstProject:["WitFlix", "A project that imitates Netflix to practice basic html and css skills, includes static 3 html pages: design system layout, 'who`s watching' page and home page. "],
+        firstProjectTags:["html","css"],
+        secondProject:["Pizza Order Form", "A vite + react project to practice react skills. Includes dynamical order page, form validation, axios requests."],
+        secondProjectTags:["javascript", "react","css", "reactstrap", "forms","form validation", "axios", "responsive design", "mobile first design"]
       },
       footer: {
-        footerText:"We can work together on your next project",
+        footerText:"We can work together on your next project.",
         linkHeadings: ["Github", "LinkedIn", "Vercel","Email"],
         footerLinksHrefs: ["https://github.com/berk-karademir", "https://www.linkedin.com/in/berk-karademir-65b150340/", "https://vercel.com/berk-karademirs-projects", "mailto:berk.karademir@hotmail.com"]
       }

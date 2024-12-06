@@ -1,5 +1,4 @@
-import { Form, FormGroup, Label, Input } from "reactstrap";
-import { languageData } from "../../data.jsx";
+import { languageData } from "../../Data.jsx";
 import { useTheme } from "../context/ThemeContext.jsx";
 
 function Header() {
@@ -18,23 +17,23 @@ function Header() {
     eMailContactHref,
     sendMailText,
     greeting,
-  } = languageData.en.header;
+  } = languageData.en.header
 
   // Custom hook kullanımı
   const { theme, toggleTheme } = useTheme();
   return (
     <section
-      className={`flex flex-row gap-8 p-4 justify-center w-full`}
+      className={`flex flex-row gap-8 pt-5 pb-20 justify-center w-full`}
       style={{
         backgroundColor: theme === "dark" ? "#2A262B" : "#F4F4F4",
         color: theme === "dark" ? "white" : "black",
-        paddingTop: "5rem",
+        
       }}
     >
       {/* LEFT COLUMN: INTRO, LINKS, CONTACT */}
       <div className="flex flex-col gap-4">
         {/* Intro Text */}
-        <p className="w-96">
+        <p className="w-[500px] text-2xl pt-20">
           {greeting}
           <br />
           {introText(name)}
@@ -104,22 +103,23 @@ function Header() {
             <i class="fas fa-sun"></i>
             <span class="ball"></span>
           </label>
-          <p>
-            <span className="pr-1">
+          <p className="font-bold">
+            <span className="pr-1 ">
               {theme === "dark" ? "LIGHT MODE |" : " DARK MODE |"}
             </span>
-            <span className="text-[#E92577]">TÜRKÇE'YE GEÇ</span>
+            <span className="text-[#E92577]">TÜRKÇE</span>'YE GEÇ
           </p>
         </div>
 
         {/* Header Image */}
+        <div className="pt-20">
         <img
           src={headerImgLocalPath}
-          width="400px"
-          height="400px"
+          width={"275px"}
           alt="Header Image"
-          className="rounded-md shadow-md"
+          className="rounded-[22px] pt-4 pl-4 ml-10 bg-[#E92577]"
         />
+        </div>
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 import React from "react";
-import { languageData } from "../../data";
 import { useTheme } from "../context/ThemeContext";
+import { languageData } from "../../Data";
 
 const {
   profileHeading,
@@ -10,7 +10,7 @@ const {
   education,
   preferredRole,
   aboutMe,
-} = languageData.en.profile;
+} = languageData.en.profile
 
 function Profile() {
   const { theme } = useTheme();
@@ -37,7 +37,10 @@ function Profile() {
             borderRadius: "8px",
           }}
         >
-          <h4 className="text-lg pb-10">{basicInfoText}</h4>
+          <h4 className="text-2xl pb-10 text-[#EA2678]" style={{
+            fontFamily:"Playfair Display"
+            
+          }}>{basicInfoText}</h4>
           <table>
             <tbody>
               <tr>

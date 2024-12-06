@@ -5,16 +5,35 @@ import {
   CardGroup,
   CardImg,
   CardLink,
-  CardSubtitle,
   CardTitle,
   CardText,
 } from "reactstrap";
-import { languageData } from "../../data";
 import { useTheme } from "../context/ThemeContext";
+import { languageData } from "../../Data";
 
 function Projects() {
-  const { projectsHeading } = languageData.en.projects;
   const { theme } = useTheme();
+  const { projectsHeading, firstProject, firstProjectTags, secondProject, secondProjectTags } = languageData.en.projects
+
+  const projects = [
+    {
+      title: firstProject[0],
+      description: firstProject[1],
+      tags: firstProjectTags,
+      github: "https://github.com/berk-karademir/witflix",
+      live: "https://witflix-iota.vercel.app/", 
+      img: "./images/witflix.png", 
+      bgColor: theme === "dark" ? "#2D3235" :"#DDEEFE", 
+    },
+    {
+      title: secondProject[0],
+      description: secondProject[1],
+      tags: secondProjectTags,
+      github: "#", 
+      live: "https://s8-pizza-project.vercel.app/", 
+      img: "./images/pizza.png", 
+      bgColor: theme === "dark" ? "#495351" :"#D9F6F1",    },
+  ];
 
   return (
     <div
@@ -24,53 +43,83 @@ function Projects() {
         padding: "5rem 5rem",
       }}
     >
-      <h2 className="text-center pb-14 text-4xl"> {projectsHeading}</h2>
+      <h2 className="text-center pb-14 text-4xl">{projectsHeading}</h2>
 
-      <div className="flex justify-center">
-        <CardGroup className="flex justify-center w-5/6 gap-11">
-          {/* -----------  1st Card  -------------*/}
-          <Card borderless>
-            <CardImg
-              alt="Card image cap"
-              src="https://picsum.photos/318/180"
-              top
-            />
-            <CardBody>
-              <CardTitle tag="h5">Card title</CardTitle>
-              <CardSubtitle className="mb-2 text-muted" tag="h6">
-                Card subtitle
-              </CardSubtitle>
-              <CardText>
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </CardText>
-              <CardLink href="#">Card Link</CardLink>
-              <CardLink href="#">Another Card Link</CardLink>
+      <div className="flex justify-center max-h-[700px]">
+        <CardGroup className="flex justify-center w-5/6 gap-11 flex-wrap">
+          {projects.map((project, index) => (
+            <Card
+            key={index}
+            style={{
+              backgroundColor: project.bgColor,
+              border: "none",
+              borderRadius: "8px",
+              maxWidth: "350px",
+              display: "flex",
+              flexDirection: "column", // Kart içeriği yukarıdan aşağıya düzenlenir
+              height: "100%", // Kartların boyutlarının eşit olması için
+            }}
+          >
+            <CardBody
+              className="flex flex-col justify-between p-7 flex-grow"
+              style={{ flex: 1 }} // Gövde alanı esner ve img'yi en alta iter
+            >
+              <div>
+                <CardTitle
+                  tag="h5"
+                  className="font-bold text-2xl"
+                  style={{
+                    fontFamily: "Playfair Display",
+                  }}
+                >
+                  {project.title}
+                </CardTitle>
+                <CardText className="my-3 indent-3">{project.description}</CardText>
+                <div className="flex gap-2 flex-wrap mb-4">
+                  {project.tags.map((tag, idx) => (
+                    <span
+                      key={idx}
+                      className="text-sm px-3 py-1 rounded-full shadow font-[600]"
+                      style={{
+                        fontSize: "0.85rem",
+                        fontFamily: "Playfair Display",
+                        backgroundColor: theme === "dark" ? "#525252" : "#ffffff",
+                        color: theme === "dark" ? "#ffffff" : "#000000",
+                      }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="flex gap-3">
+                <CardLink
+                  href={project.github}
+                  className="font-bold"
+                >
+                  View on Github
+                </CardLink>
+                <CardLink
+                  href={project.live}
+                  className="font-bold"
+                >
+                  Go to app →
+                </CardLink>
+              </div>
             </CardBody>
-          </Card>
-
-          {/* -----------  2nd Card  -------------*/}
-          <Card>
             <CardImg
-              alt="Card image cap"
-              src="https://picsum.photos/318/180"
-              top
+              alt={`${project.title} preview`}
+              src={project.img}
+              bottom
+              style={{
+                borderRadius: "0 0 8px 8px",
+                objectFit: "cover", // Görseller düzgün kesilirse orantılı kalır
+                maxHeight: "200px", // Görsellerin yüksekliğini sabitlemek için
+                width: "100%", // Görseller kart genişliğine uyar
+              }}
             />
-            <CardBody>
-              <CardTitle tag="h5">Card title</CardTitle>
-              <CardSubtitle className="mb-2 text-muted" tag="h6">
-                Card subtitle
-              </CardSubtitle>
-              <CardText>
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </CardText>
-              <CardLink href="#">Card Link</CardLink>
-              <CardLink href="#">Another Card Link</CardLink>
-            </CardBody>
           </Card>
+          ))}
         </CardGroup>
       </div>
     </div>
