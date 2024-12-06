@@ -29,7 +29,7 @@ function Projects() {
       title: secondProject[0],
       description: secondProject[1],
       tags: secondProjectTags,
-      github: "#", 
+      github: "https://github.com/berk-karademir/s8-pizza-project", 
       live: "https://s8-pizza-project.vercel.app/", 
       img: "./images/pizza.png", 
       bgColor: theme === "dark" ? "#495351" :"#D9F6F1",    },
