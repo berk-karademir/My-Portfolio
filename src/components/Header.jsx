@@ -51,7 +51,7 @@ function Header() {
               <img
                 src={link.src}
                 alt={link.alt}
-                className="hover:scale-105 transition-transform"
+                className="hover:scale-[120%] transition-transform"
               />
             </a>
           ))}
