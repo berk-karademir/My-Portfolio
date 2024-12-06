@@ -9,7 +9,7 @@ import {
   CardText,
 } from "reactstrap";
 import { useTheme } from "../context/ThemeContext";
-import { languageData } from "../../Data.jsx";
+import { languageData } from "../../data.js";
 
 function Projects() {
   const { theme } = useTheme();

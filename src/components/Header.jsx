@@ -1,4 +1,4 @@
-import { languageData } from "../../Data.jsx";
+import { languageData } from "../../data.js";
 import { useTheme } from "../context/ThemeContext.jsx";
 
 function Header() {

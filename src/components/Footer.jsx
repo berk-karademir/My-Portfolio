@@ -1,6 +1,6 @@
 import React from "react";
 import { useTheme } from "../context/ThemeContext";
-import { languageData } from "../../Data.jsx";
+import { languageData } from "../../data.js"
 
 function Footer() {
   const { footerText, linkHeadings, footerLinksHrefs } = languageData.en.footer;
