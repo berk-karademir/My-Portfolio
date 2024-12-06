@@ -43,7 +43,7 @@ export const languageData = {
       footer: {
         footerText:"We can work together on your next project.",
         linkHeadings: ["Github", "LinkedIn", "Vercel","Email"],
-        footerLinksHrefs: ["https://github.com/berk-karademir", "https://www.linkedin.com/in/berk-karademir-65b150340/", "https://vercel.com/berk-karademirs-projects", "mailto:berk.karademir@hotmail.com"]
+        footerLinksHrefs: ["https://github.com/berk-karademir", "https://www.linkedin.com/in/berk-karademir/", "https://vercel.com/berk-karademirs-projects", "mailto:berk.karademir@hotmail.com"]
       }
     },
     tr: {
@@ -56,7 +56,7 @@ export const languageData = {
           return `Ben ${name}. Full-stack web geliştiriciyim, tüm öğrendiklerimi uygulayabileceğim projeler yapmaya çalışıyorum. Hadi tanışalım.`;
         },
         headerImgLocalPath: "images/header_img.png",
-        headerLinkImages: [{src:"images/linkedin-logo.png", href:"https://www.linkedin.com/in/berk-karademir-65b150340/", alt:"My LinkedIn Profile"}, {src:"images/github_logo.svg", href:"https://github.com/berk-karademir", alt:"My GitHub Profile"},],
+        headerLinkImages: [{src:"images/linkedin-logo.png", href:"https://www.linkedin.com/in/berk-karademir/", alt:"My LinkedIn Profile"}, {src:"images/github_logo.svg", href:"https://github.com/berk-karademir", alt:"My GitHub Profile"},],
         currentStatusText(courseName) {
           return `Şuanda ${courseName}'te full-stack web developer eğitim alıyorum.`;
         },
