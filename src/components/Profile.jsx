@@ -1,6 +1,6 @@
 import React from "react";
 import { useTheme } from "../context/ThemeContext";
-import { languageData } from "../../Data";
+import { languageData } from "../../Data.jsx";
 
 
 

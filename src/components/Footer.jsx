@@ -1,6 +1,6 @@
 import React from "react";
 import { useTheme } from "../context/ThemeContext";
-import { languageData } from "../../Data";
+import { languageData } from "../../Data.jsx";
 
 function Footer() {
   const { footerText, linkHeadings, footerLinksHrefs } = languageData.en.footer;
@@ -11,7 +11,7 @@ function Footer() {
 
   return (
     <div
-      className="text-center flex justify-center items-center pt-20"
+      className="text-center flex justify-center items-center pt-20 pb-20"
       style={{
         backgroundColor: theme === "dark" ? "#484148" : "#ffffff",
         color: theme === "dark" ? "white" : "black",

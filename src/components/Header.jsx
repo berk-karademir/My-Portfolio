@@ -97,11 +97,11 @@ function Header() {
               backgroundColor: theme === "dark" ? "black" : "#E92577",
             }}
             htmlFor="checkbox"
-            class="checkbox-label"
+            className="checkbox-label"
           >
-            <i class="fas fa-moon"></i>
-            <i class="fas fa-sun"></i>
-            <span class="ball"></span>
+            <i className="fas fa-moon"></i>
+            <i className="fas fa-sun"></i>
+            <span className="ball"></span>
           </label>
           <p className="font-bold">
             <span className="pr-1 ">

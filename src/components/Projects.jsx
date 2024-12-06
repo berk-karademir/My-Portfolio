@@ -9,7 +9,7 @@ import {
   CardText,
 } from "reactstrap";
 import { useTheme } from "../context/ThemeContext";
-import { languageData } from "../../Data";
+import { languageData } from "../../Data.jsx";
 
 function Projects() {
   const { theme } = useTheme();
@@ -92,20 +92,28 @@ function Projects() {
                   ))}
                 </div>
               </div>
-              <div className="flex gap-3">
-                <CardLink
-                  href={project.github}
-                  className="font-bold"
-                >
-                  View on Github
-                </CardLink>
-                <CardLink
-                  href={project.live}
-                  className="font-bold"
-                >
-                  Go to app →
-                </CardLink>
-              </div>
+              <div className="flex justify-between items-center">
+  <CardLink
+    href={project.github}
+    className="font-bold"
+    style={{
+      textAlign: "left", // Sola hizalanır (opsiyonel)
+    }}
+  >
+    View on Github
+  </CardLink>
+  <CardLink
+    href={project.live}
+    className="font-bold"
+    style={{
+      textAlign: "right", // Sağa hizalanır
+      marginLeft: "auto", // Arada kalan boşluğu doldurur
+    }}
+  >
+    Go to app →
+  </CardLink>
+</div>
+
             </CardBody>
             <CardImg
               alt={`${project.title} preview`}
