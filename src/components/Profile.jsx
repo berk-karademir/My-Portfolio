@@ -2,17 +2,18 @@ import React from "react";
 import { useTheme } from "../context/ThemeContext";
 import { languageData } from "../../Data";
 
-const {
-  profileHeading,
-  basicInfoText,
-  dateOfBirth,
-  currentLocation,
-  education,
-  preferredRole,
-  aboutMe,
-} = languageData.en.profile
+
 
 function Profile() {
+  const {
+    profileHeading,
+    basicInfoText,
+    dateOfBirth,
+    currentLocation,
+    education,
+    preferredRole,
+    aboutMe,
+  } = languageData.en.profile
   const { theme } = useTheme();
 
   return (
