@@ -77,7 +77,7 @@ function Profile() {
           </table>
         </div>
 
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col justify-center pl-7">
           <h3 className="text-2xl pb-5" style={{
             fontFamily:"Playfair Display"
           }}>{aboutMe[0]}</h3>
