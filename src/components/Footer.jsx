@@ -37,7 +37,7 @@ function Footer() {
       </div>
       
     </div>
-    <p className="text-center italic text-[12px] font-bold">Berk Karademir</p>
+    <p className="text-center italic text-[12px] font-bold bg-inherit text-inherit">Berk Karademir</p>
     </>
   );
 }
