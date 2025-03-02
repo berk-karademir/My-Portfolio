@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useTheme } from "../context/ThemeContext";
-import { languageData } from "../../data.js";
-
-
+import { languageData } from "../../myData.js";
+import { LanguageContext } from "../context/LanguageContext";
 
 function Profile() {
+  
+  const { currentLanguage } = useContext(LanguageContext);
+  const { currentTheme } = useTheme();
+
   const {
     profileHeading,
     basicInfoText,
@@ -13,26 +16,25 @@ function Profile() {
     education,
     preferredRole,
     aboutMe,
-  } = languageData.en.profile
-  const { theme } = useTheme();
+  } = languageData[currentLanguage].profile
 
   return (
-    <div
+    <section
       style={{
-        backgroundColor: theme === "dark" ? "#2A262B" : "#F4F4F4",
-        color: theme === "dark" ? "#ffffff" : "#000000",
+        backgroundColor: currentTheme === "dark" ? "#121212" : "#F4F4F4",
+        color: currentTheme === "dark" ? "#ffffff" : "#000000",
         paddingBottom: "5rem",
       }}
     >
       <h2 className="text-center py-12 text-4xl">{profileHeading}</h2>
-      <section className="flex justify-center gap-10">
+      <div className="flex justify-center gap-32">
         <div
           style={{
             backgroundColor:
-              theme === "dark" ? "rgba(82,82,82,1)" : "rgba(255,255,255,1)",
-            color: theme === "dark" ? "#ffffff" : "#000000",
+            currentTheme === "dark" ? "rgba(82,82,82,1)" : "rgba(255,255,255,1)",
+            color: currentTheme === "dark" ? "#ffffff" : "#000000",
             boxShadow: `10px 10px 1px ${
-              theme === "dark" ? "rgba(82,82,82,0.5)" : "rgba(82,82,82,0.5)"
+              currentTheme === "dark" ? "rgba(82,82,82,0.5)" : "rgba(82,82,82,0.5)"
             }`,
             padding: "3rem",
             borderRadius: "8px",
@@ -77,31 +79,17 @@ function Profile() {
           </table>
         </div>
 
-        <div className="flex flex-col justify-center pl-7">
+        <div className="flex flex-col justify-center pl-7 max-w-[500px]">
           <h3 className="text-2xl pb-5" style={{
             fontFamily:"Playfair Display"
           }}>{aboutMe[0]}</h3>
-          <p className="pb-5"
-            dangerouslySetInnerHTML={{
-              __html: aboutMe[1]
-                .replace(
-                  "I graduated in 2020 from university,",
-                  "I graduated in 2020 from university,<br />"
-                )
-                .replace(
-                  "i have worked in chain-store brand in retail industry about 3 years.",
-                  "i have worked in chain-store brand in retail industry about 3 years.<br />"
-                )
-                .replace(
-                  "I have been in a full-stack web developer bootcamp since September 2024.",
-                  "I have been in a full-stack web developer bootcamp since September 2024.<br />"
-                ),
-            }}
+          <p className="pb-5 "
           />
+          {aboutMe[1]}
           <p>{aboutMe[2]}</p>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }
 

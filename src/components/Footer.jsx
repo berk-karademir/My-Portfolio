@@ -1,20 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useTheme } from "../context/ThemeContext";
-import { languageData } from "../../data.js";
+import { languageData } from "../../myData.js";
+import { LanguageContext } from "../context/LanguageContext";
 
 function Footer() {
-  const { footerText, linkHeadings, footerLinksHrefs } = languageData.en.footer;
-  const { theme } = useTheme();
-
+  const { currentTheme } = useTheme();
+  const { currentLanguage } = useContext(LanguageContext);
+  
+  const { footerText, linkHeadings, footerLinksHrefs } = languageData[currentLanguage].footer;
   const linkColors = ["#1769FF", "#0A0A14", "#0077B5", "#AF0C48"];
 
   return (
     <>
-      <div
+      <footer
         className="text-center flex justify-center items-center pt-20 pb-20"
         style={{
-          backgroundColor: theme === "dark" ? "#484148" : "#ffffff",
-          color: theme === "dark" ? "white" : "black",
+          backgroundColor: currentTheme === "dark" ? "#121212" : "#ffffff",
+          color: currentTheme === "dark" ? "white" : "black",
         }}
       >
         <p className="text-3xl w-80 ">{footerText}</p>
@@ -34,7 +36,7 @@ function Footer() {
             </a>
           ))}
         </div>
-      </div>
+      </footer>
     </>
   );
 }

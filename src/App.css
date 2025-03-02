@@ -40,9 +40,15 @@
 .read-the-docs {
   color: #888;
 } */
+ :root {
+  --toastify-toast-bg-dark: #fff;
+  --toastify-toast-bg-light: #000;
+ }
+
 * {
   font-family: "Inter";
 }
+
 
 .checkbox {
   opacity: 0;

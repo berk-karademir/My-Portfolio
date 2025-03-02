@@ -1,77 +1,57 @@
-import { languageData } from "../../data.js";
+import { useContext } from "react";
 import { useTheme } from "../context/ThemeContext.jsx";
-
+import { LanguageContext } from "../context/LanguageContext.jsx";
+import { languageData } from "../../myData.js";
 function Header() {
+
+  const { currentTheme, toggleTheme } = useTheme();
+  const { currentLanguage, toggleLanguage } = useContext(LanguageContext);
+
+  const {en, tr} = languageData.langOptions;
   const {
-    languageLabelHeading,
-    themeSwitchHeading,
-    name,
+    
     introText,
+    currentStatusText,
+    greeting,
+    name,
     headerImgLocalPath,
-    headerLinkImages,
-    currentWorkingStatusText,
+    headerLinksImages,
     courseLinkHref,
-    courseNameText,
     navToContactText,
+    sendMailText,
     eMail,
     eMailContactHref,
-    sendMailText,
-    greeting,
-  } = languageData.en.header
-
-  // Custom hook kullanımı
-  const { theme, toggleTheme } = useTheme();
+    courseName,
+  } = languageData[currentLanguage].header;
   return (
-    <section
-      className={`flex flex-row gap-8 pt-5 pb-20 justify-center w-full`}
+    <header
+      className="flex justify-evenly pt-10 px-96"
       style={{
-        backgroundColor: theme === "dark" ? "#2A262B" : "#F4F4F4",
-        color: theme === "dark" ? "white" : "black",
-        
+        backgroundColor: currentTheme === "dark" ? "#121212" : "#F4F4F4",
+        color: currentTheme === "dark" ? "white" : "black",
       }}
     >
-      {/* LEFT COLUMN: INTRO, LINKS, CONTACT */}
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col justify-center">
         {/* Intro Text */}
-        <p className="w-[500px] text-2xl pt-20">
+        <p className="text-2xl max-w-3xl">
           {greeting}
           <br />
           {introText(name)}
         </p>
 
-        {/* Dynamic Links */}
-        <div className="flex gap-4">
-          {headerLinkImages.map((link, index) => (
-            <a
-              key={index}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src={link.src}
-                alt={link.alt}
-                className="hover:scale-[120%] transition-transform"
-              />
-            </a>
-          ))}
-        </div>
-
         {/* Current Working Status */}
-        <p>
-          {currentWorkingStatusText}
+        <p className="text-xl mt-4">
           <a
             href={courseLinkHref}
             target="_blank"
             rel="noopener noreferrer"
             className="text-red-500 underline"
-          >
-            {courseNameText}
-          </a>
+          ></a>
+          {currentStatusText(courseName)}
         </p>
 
         {/* Contact Info */}
-        <p>
+        <p className="text-xl">
           {navToContactText}
           <a
             href={`${eMailContactHref}`}
@@ -80,12 +60,35 @@ function Header() {
             {sendMailText + eMail}
           </a>
         </p>
+        <span className="flex gap-3 my-2">
+          {Object.entries(headerLinksImages).map(([key, link], index) => {
+            const linkData =
+              key === "github"
+                ? currentTheme === "dark"
+                  ? link.light
+                  : link.dark
+                : link;
+
+            return (
+              <a
+                key={index}
+                href={linkData.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src={linkData.src}
+                  alt={linkData.alt}
+                  className="hover:scale-[120%] transition-transform max-w-[50px]"
+                />
+              </a>
+            );
+          })}
+        </span>
       </div>
 
-      {/* RIGHT COLUMN: THEME SWITCH, LANGUAGE SELECT, HEADER IMAGE */}
-      <div>
-        {/* Language Selector and Theme Switch */}
-        <div className="flex justify-evenly pb-5">
+      <div className="flex flex-col items-center font-bold">
+        <div className="flex gap-1">
           <input
             type="checkbox"
             class="checkbox"
@@ -94,7 +97,7 @@ function Header() {
           />
           <label
             style={{
-              backgroundColor: theme === "dark" ? "black" : "#E92577",
+              backgroundColor: currentTheme === "dark" ? "black" : "#E92577",
             }}
             htmlFor="checkbox"
             className="checkbox-label"
@@ -103,25 +106,40 @@ function Header() {
             <i className="fas fa-sun"></i>
             <span className="ball"></span>
           </label>
-          <p className="font-bold">
-            <span className="pr-1 ">
-              {theme === "dark" ? "LIGHT MODE |" : " DARK MODE |"}
-            </span>
-            <span className="text-[#E92577]">TÜRKÇE</span>'YE GEÇ
-          </p>
+
+          <span>
+          {currentTheme === "dark"
+              ? currentLanguage === "tr"
+                ? "AÇIK TEMA |"
+                : "LIGHT MODE |"
+              : currentLanguage === "tr"
+              ? "KARANLIK TEMA |"
+              : "DARK MODE |"}
+          </span>
+
+          {/* lang toggler */}
+          <div className="flex gap-1" onClick={toggleLanguage}>
+            <img
+              src="https://www.svgrepo.com/show/348388/language.svg"
+              alt="lang-ico"
+              className={`w-5 h-7 pb-1 ${
+                currentTheme === "dark" ? "invert" : ""
+              }`}
+            />
+            {currentLanguage === "en" ? tr : en}
+          </div>
         </div>
 
-        {/* Header Image */}
-        <div className="pt-20">
-        <img
-          src={headerImgLocalPath}
-          width={"275px"}
-          alt="Header Image"
-          className="rounded-[22px] pt-4 pl-4 ml-10 bg-[#E92577]"
-        />
-        </div>
+        <span>
+          <img
+            src={headerImgLocalPath}
+            alt=""
+            width={"275px"}
+            className="bg-blue-900 pl-5 pt-5 rounded-2xl "
+          />
+        </span>
       </div>
-    </section>
+    </header>
   );
 }
 

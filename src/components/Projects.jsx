@@ -9,125 +9,122 @@ import {
   CardText,
 } from "reactstrap";
 import { useTheme } from "../context/ThemeContext";
-import { languageData } from "../../data.js";
+import { languageData } from "../../myData.js";
+import { useContext } from "react";
+import { LanguageContext } from "../context/LanguageContext";
 
 function Projects() {
-  const { theme } = useTheme();
-  const { projectsHeading, firstProject, firstProjectTags, secondProject, secondProjectTags } = languageData.en.projects
+  
+  const { currentTheme } = useTheme();
+  const { currentLanguage } = useContext(LanguageContext);
 
-  const projects = [
-    {
-      title: firstProject[0],
-      description: firstProject[1],
-      tags: firstProjectTags,
-      github: "https://github.com/berk-karademir/witflix",
-      live: "https://witflix-iota.vercel.app/", 
-      img: "./images/witflix.png", 
-      bgColor: theme === "dark" ? "#2D3235" :"#DDEEFE", 
-    },
-    {
-      title: secondProject[0],
-      description: secondProject[1],
-      tags: secondProjectTags,
-      github: "https://github.com/berk-karademir/s8-pizza-project", 
-      live: "https://s8-pizza-project.vercel.app/", 
-      img: "./images/pizza.png", 
-      bgColor: theme === "dark" ? "#495351" :"#D9F6F1",    },
-  ];
+  const { projects } = languageData[currentLanguage];
+  const cardsBgColors = {dark: ["#2D3235", "#3B4C49"], light: ["#DDEEFE", "#D9F6F1"],};
 
   return (
     <div
       style={{
-        backgroundColor: theme === "dark" ? "#484148" : "#ffffff",
-        color: theme === "dark" ? "white" : "black",
+        backgroundColor: currentTheme === "dark" ? "#2F3B4C" : "#ffffff",
+        color: currentTheme === "dark" ? "white" : "black",
         padding: "5rem 5rem",
       }}
     >
-      <h2 className="text-center pb-14 text-4xl">{projectsHeading}</h2>
+      <h2 className="text-center pb-14 text-4xl max-w-[700px] mx-auto">{projects[0].header}</h2>
 
       <div className="flex justify-center max-h-[700px]">
         <CardGroup className="flex justify-center w-5/6 gap-11 flex-wrap">
-          {projects.map((project, index) => (
+          {projects.slice(1).map((project, index) => (
+            <>
+            
             <Card
-            key={index}
-            style={{
-              backgroundColor: project.bgColor,
-              border: "none",
-              borderRadius: "8px",
-              maxWidth: "350px",
-              display: "flex",
-              flexDirection: "column", // Kart içeriği yukarıdan aşağıya düzenlenir
-              height: "100%", // Kartların boyutlarının eşit olması için
-            }}
-          >
-            <CardBody
-              className="flex flex-col justify-between p-7 flex-grow"
-              style={{ flex: 1 }} // Gövde alanı esner ve img'yi en alta iter
+              key={index}
+              style={{
+                backgroundColor: cardsBgColors[currentTheme][index % cardsBgColors[currentTheme].length],
+                border: "none",
+                borderRadius: "8px",
+                maxWidth: "350px",
+                display: "flex",
+                flexDirection: "column",
+                height: "100%",
+              }}
             >
-              <div>
-                <CardTitle
-                  tag="h5"
-                  className="font-bold text-2xl"
-                  style={{
-                    fontFamily: "Playfair Display",
-                  }}
-                >
-                  {project.title}
-                </CardTitle>
-                <CardText className="my-3 indent-3">{project.description}</CardText>
-                <div className="flex gap-2 flex-wrap mb-4">
-                  {project.tags.map((tag, idx) => (
-                    <span
+              <CardBody
+                className="flex flex-col justify-between p-7 flex-grow"
+                style={{ flex: 1 }}
+              >
+                <div>
+                  <CardTitle
+                    tag="h5"
+                    className="font-bold text-2xl"
+                    style={{
+                      fontFamily: "Playfair Display",
+                    }}
+                  >
+                    {project.title}
+                  </CardTitle>
+                  <CardText className="my-3 indent-3">{project.description}</CardText>
+                  <div className="flex gap-2 flex-wrap mb-4">
+                    {project.tags.map((tag, idx) => (
+                      <span
+                        key={idx}
+                        className="text-sm px-3 py-1 rounded-full shadow font-[600]"
+                        style={{
+                          fontSize: "0.85rem",
+                          fontFamily: "Playfair Display",
+                          backgroundColor: currentTheme === "dark" ? "#525252" : "#ffffff",
+                          color: currentTheme === "dark" ? "#ffffff" : "#000000",
+                        }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div className="flex justify-around items-center">
+                  {project.links.map((link, idx) => (
+                    <CardLink
                       key={idx}
-                      className="text-sm px-3 py-1 rounded-full shadow font-[600]"
-                      style={{
-                        fontSize: "0.85rem",
-                        fontFamily: "Playfair Display",
-                        backgroundColor: theme === "dark" ? "#525252" : "#ffffff",
-                        color: theme === "dark" ? "#ffffff" : "#000000",
-                      }}
+                      href={link.href}
+                      target="_blank"
+                      className={`
+                        font-bold 
+                        px-4 py-2 mt-2
+                        rounded-lg 
+                        transition-all 
+                        duration-300 
+                        ease-in-out 
+                        hover:scale-110 
+                        active:scale-95 
+                        shadow-md 
+                        hover:shadow-lg 
+                        ${
+                          currentTheme === "dark"
+                            ? "bg-gray-700 text-white hover:bg-gray-600"
+                            : "bg-blue-500 text-white hover:bg-blue-600"
+                        }
+                      `}
                     >
-                      {tag}
-                    </span>
+                      {link.name} &nbsp; &#129157;
+                      
+                    </CardLink>
                   ))}
                 </div>
-              </div>
-              <div className="flex justify-between items-center">
-  <CardLink
-    href={project.github}
-    className="font-bold"
-    style={{
-      textAlign: "left", // Sola hizalanır (opsiyonel)
-    }}
-  >
-    View on Github
-  </CardLink>
-  <CardLink
-    href={project.live}
-    className="font-bold"
-    style={{
-      textAlign: "right", // Sağa hizalanır
-      marginLeft: "auto", // Arada kalan boşluğu doldurur
-    }}
-  >
-    Go to app →
-  </CardLink>
-</div>
-
-            </CardBody>
-            <CardImg
-              alt={`${project.title} preview`}
-              src={project.img}
-              bottom
-              style={{
-                borderRadius: "0 0 8px 8px",
-                objectFit: "cover", // Görseller düzgün kesilirse orantılı kalır
-                maxHeight: "200px", // Görsellerin yüksekliğini sabitlemek için
-                width: "100%", // Görseller kart genişliğine uyar
-              }}
-            />
-          </Card>
+              </CardBody>
+              <CardImg
+                alt={project.img.alt}
+                src={project.img.src}
+                bottom
+                style={{
+                  borderRadius: "0 0 8px 8px",
+                  objectFit: "cover",
+                  maxHeight: "200px",
+                  width: "100%",
+                }}
+              />
+            </Card>
+            </>
           ))}
+         
         </CardGroup>
       </div>
     </div>
